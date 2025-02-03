@@ -1,0 +1,26 @@
+const { Schema, model } = require("mongoose");
+
+const orderSchema = new Schema({
+  date: { type: String, required: true },
+  time: { type: String, required: true },
+  address: { type: String, required: true },
+  landmark: String,
+  pincode: { type: String, required: true },
+  weight: { type: String, required: true },
+  category: { type: String, required: true },
+  phone: { type: String, required: true },
+  status: { type: String,required:true },
+});
+
+const workerSchema = new Schema({
+  name: { type: String, required: true },
+  email: { type: String, required: true },
+  password: { type: String, required: true },
+  address: { type: String, required: true },
+  landmark: { type: String, required: true },
+  pincode: { type: String, required: true },
+  phone: { type: String, required: true },
+  order: [orderSchema],
+});
+
+module.exports = model("worker", workerSchema);
